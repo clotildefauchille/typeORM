@@ -1,9 +1,9 @@
 import express from 'express';
+import clientController from "../controller/clientControlleur";
 
 const clientApiRouter = express.Router();
 
-clientApiRouter.get('/', (req, res) => {
-    console.log('yo create client')
-})
+clientApiRouter.post("/", clientController.createOneClient);
+
 
 export default clientApiRouter;

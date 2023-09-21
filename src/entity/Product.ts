@@ -7,10 +7,10 @@ import {
 
 
 export enum ProductCategoy {
-    ENTREE = 'entree',
-    PLAT= 'plat',
-    DESSERT = 'dessert',
-    SNACK = 'snack'
+    ENTREE = 1,
+    PLAT= 2,
+    DESSERT = 3,
+    SNACK = 4
 }
 
 @Entity("product")
@@ -18,7 +18,7 @@ export class Product extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({unique: true})
   name: string;
 
   @Column()
@@ -28,5 +28,5 @@ export class Product extends BaseEntity {
     type: "enum",
     enum: ProductCategoy,
   })
-  categorie: ProductCategoy;
+  category: ProductCategoy;
 }
