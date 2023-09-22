@@ -6,14 +6,12 @@ import {
   ManyToOne,
   ManyToMany,
   JoinTable,
+  JoinColumn,
 } from "typeorm";
 import { Client } from "./Client";
 import {Product} from './Product';
+import { Cart } from '../type/generalType';
 
-export type Cart = {
-  product: number;
-  quantity: number;
-};
 
 export enum OrderState {
   RECEIVED = "received",
@@ -51,8 +49,9 @@ export class Order extends BaseEntity {
   })
   state: OrderState;
 
-  @ManyToOne(() => Client, (client) => client.orders)
+  @ManyToOne(() => Client, (client) => client.orders, { nullable: false })
   client: Client;
+  @JoinColumn({name: 'clientId'})
 
   @ManyToMany(() => Product)
   @JoinTable()

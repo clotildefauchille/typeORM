@@ -8,7 +8,7 @@ const handleErrorResponse = (res: Response, error: Error, type: string) => {
       .json({ error: `${type} existe déjà en base de données.` });
   } else {
     return res.status(500).json({
-      error: "Une erreur s'est produite lors de la création.",
+      error: `Une erreur s'est produite lors de la création. ${error.message}`,
     });
   }
 }
