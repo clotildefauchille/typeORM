@@ -5,7 +5,7 @@ import pool from './connectDB/connectDB';
 
 const app = express();
 
-const port = 5000;
+const port = 4000;
 
 // try {
 //   const connect = async () => {
